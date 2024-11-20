@@ -10,9 +10,9 @@
 template <typename V>
 class HashTable : public Dict<V> {
 private:
-    int n; // Number of entries in the table
-    int max; // Maximum size of the hash table
-    ListLinked<TableEntry<V> > *table; // Array of linked lists for table entries
+    int n; 
+    int max;
+    ListLinked<TableEntry<V> > *table; 
 
     int h(const std::string &key) const {
         int hash = 0;

@@ -10,9 +10,9 @@ class TableEntry {
         std::string key;
         V value;
 
-        TableEntry(std::string key, V value):key(key),value(value){}
-        TableEntry(std::string key):key(key),value(NULL){}
-        TableEntry():key(NULL),value(NULL){}
+        TableEntry(const std::string &key, V value):key(key),value(value){}
+        TableEntry(const std::string &key):key(key),value(V()){}
+        TableEntry():key(""),value(V()){}
         friend bool operator==(const TableEntry<V> &te1, const TableEntry<V> &te2){
             return te1.key==te2.key; 
         }
