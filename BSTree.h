@@ -71,7 +71,8 @@ class BSTree {
             if (n != nullptr) {
             delete_cascade(n->left);
             delete_cascade(n->right);
-            delete n;}
+            delete n;
+            nelem=0;}
         }
 
 
@@ -94,6 +95,7 @@ class BSTree {
 
         void insert(T e){
             root = insert(root, e);
+            nelem++;
         }
 
         friend std::ostream& operator<<(std::ostream &out, const BSTree<T> &bst){
@@ -103,6 +105,7 @@ class BSTree {
 
         void remove(T e){
             root = remove(root, e);
+            nelem--;
         }
     
 };
