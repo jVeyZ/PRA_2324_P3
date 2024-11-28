@@ -23,6 +23,12 @@ class TableEntry {
             out << te.key << "->" << te.value << std::endl;
             return out;
         }
+        friend bool operator<(const TableEntry<V> &te1, const TableEntry<V> &te2){
+            return te1.value<te2.value;
+        }
+        friend bool operator>(const TableEntry<V> &te1, const TableEntry<V> &te2){
+            return te1.value>te2.value;
+        }
     
 };
 
