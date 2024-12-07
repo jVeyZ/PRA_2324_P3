@@ -25,30 +25,23 @@ class BSTreeDict: public Dict<V> {
             return search(key);
         }
 
-        void insert(const std::string &key, V value){
-             tree->insert(TableEntry<V>(key, value));
+        void insert(std::string key, V value) override {
+            TableEntry<V> entry(key, value);
+		    tree->insert(entry);
         }
-        V search(const std::string &key){
-            TableEntry<V> entry(key);
-            BSNode<TableEntry<V>>* result = tree->search(entry);
-            if (result == nullptr) {
-                throw std::runtime_error("Key not found");
-            }
-            return result->elem.value;
+       V search(std::string key) override
+	{
+		TableEntry<V> entry(key, V());
+		return tree->search(entry).value;
+	}
+        
+        V remove(std::string key) override{
+            V aux = search(key);
+            tree->remove(key);
+            return aux;
         }
         
-        V remove(const std::string &key){
-            TableEntry<V> entry(key);
-            BSNode<TableEntry<V>>* result = tree->search(entry);
-            if (result == nullptr) {
-                throw std::runtime_error("Key not found");
-            }
-            V value = result->elem.value;
-            tree->remove(entry);
-            return value;
-        }
-        
-        int entries() {
+        int entries() override{
             return tree->size();
         }
         
